@@ -33,6 +33,7 @@ module.exports = {
       red: "#ed203d",
       white: "#ffffff",
       transparent: "transparent",
+      error: "#dc2626",
     },
     extend: {
       dropShadow: {
