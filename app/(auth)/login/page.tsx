@@ -17,7 +17,7 @@ const LoginPage = () => {
         )}
       >
         <>
-          <FaChevronLeft className="w-4 h-4 mr-2" />
+          <FaChevronLeft className="w-3 h-3 mr-2" />
           Back
         </>
       </Link>
