@@ -7,7 +7,10 @@ import Link from "next/link";
 import React, { useContext } from "react";
 
 const Post = () => {
-  const { articles }: FirebaseContextProps = useContext(FirbaseContext);
+  const { articles, handleAuth, currentUser }: FirebaseContextProps =
+    useContext(FirbaseContext);
+
+  console.log("ccacacc", currentUser);
   return (
     <div>
       <Link href="/">Home</Link>
@@ -15,6 +18,11 @@ const Post = () => {
       {articles?.map((article: Article, key) => {
         return <Card post={article} key={key} />;
       })}
+      {!currentUser?.email && (
+        <span className="cursor-pointer" onClick={handleAuth}>
+          Login
+        </span>
+      )}
     </div>
   );
 };
