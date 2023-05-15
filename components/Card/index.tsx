@@ -10,13 +10,15 @@ export const Card: React.FC<CardDataProps> = ({ post: { id, data } }) => {
   const [user, setUser] = useState<UserInformation>({});
 
   useEffect(() => {
-    const getAuther = async () => {
-      setUser(
-        (await getDoc(doc(db, "users", data?.author || ""))).data() || {}
-      );
-    };
-    getAuther();
-  }, []);
+    if (!data?.author) {
+      const getAuther = async () => {
+        setUser(
+          (await getDoc(doc(db, "users", data?.author || ""))).data() || {}
+        );
+      };
+      getAuther();
+    }
+  }, [data?.author]);
 
   return (
     <aside id={id}>

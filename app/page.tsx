@@ -5,6 +5,7 @@ const Home = () => {
     <div>
       <Link href="/">Home</Link>
       <Link href="/post">Post</Link>
+      <span className="cursor-pointer">Login</span>
     </div>
   );
 };

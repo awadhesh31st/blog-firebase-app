@@ -1,10 +1,13 @@
-export interface FirebaseDatabases {
+export interface FirebaseCollection {
   dataBase: "users" | "articles";
 }
 
 export interface FirebaseContextProps {
   users?: User[];
   articles?: Article[];
+  loading?: boolean;
+  handleAuth?: () => void;
+  currentUser?: UserInformation;
 }
 
 export interface User {
@@ -18,6 +21,7 @@ export interface Article {
 }
 
 export interface UserInformation {
+  id?: string;
   updatedAt?: DateTime;
   bio?: string;
   lastname?: string;
@@ -41,4 +45,13 @@ export interface ArticleInformation {
 export interface DateTime {
   seconds?: string;
   nanoseconds?: string;
+}
+
+export interface GoogleLoginUserResponse {
+  providerId?: string;
+  uid?: string;
+  displayName?: string;
+  email?: string;
+  phoneNumber?: string;
+  photoURL?: string;
 }
