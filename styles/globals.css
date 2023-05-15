@@ -41,6 +41,6 @@
 
 @layer base {
   body {
-    @apply p-0 m-0 text-base font-light bg-biege text-coal;
+    @apply bg-coal text-biege font-light;
   }
 }

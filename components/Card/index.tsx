@@ -5,6 +5,7 @@ import { CardDataProps } from "@/types/UiComponent";
 import { doc, getDoc } from "firebase/firestore";
 import { db } from "@/firebase/firebase";
 import { UserInformation } from "@/types/firebase";
+import Image from "next/image";
 
 export const Card: React.FC<CardDataProps> = ({ post: { id, data } }) => {
   const [user, setUser] = useState<UserInformation>({});
@@ -21,23 +22,40 @@ export const Card: React.FC<CardDataProps> = ({ post: { id, data } }) => {
   }, [data?.author]);
 
   return (
-    <aside id={id}>
-      <div className="flex flex-col max-w-sm gap-3 p-6 m-8 shadow-md cursor-pointer rounded-2xl bg-coal hover:bg-charcoal">
-        {data?.title && (
-          <h5
-            className="text-2xl font-bold tracking-tight text-gray-900 text-biege"
-            data-testid="card-title"
-          >
-            {data?.title}
-          </h5>
-        )}
-        {data?.content && (
-          <p className="font-normal text-gray-400 text-grayDark">
-            {data?.content}
-          </p>
-        )}
-        <span className="text-pink">{user?.firstName}</span>
+    <article
+      key={id}
+      className="flex max-w-xl flex-col items-start justify-between"
+    >
+      <div className="flex items-center gap-x-4 text-xs">
+        <a
+          href={data?.articles_image}
+          className="relative z-10 rounded-full bg-gray-50 px-3 py-1.5 font-medium text-gray-600 hover:bg-gray-100"
+        >
+          {data?.title}
+        </a>
       </div>
-    </aside>
+      <div className="group relative">
+        <h3 className="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
+          <a href={data?.articles_image}>
+            <span className="absolute inset-0" />
+            {data.title}
+          </a>
+        </h3>
+        <p className="mt-5 line-clamp-3 text-sm leading-6 text-gray-600">
+          {data?.content}
+        </p>
+      </div>
+      <div className="relative mt-8 flex items-center gap-x-4">
+        <div className="text-sm leading-6">
+          <p className="font-semibold text-gray-900">
+            <a href={data?.articles_image}>
+              <span className="absolute inset-0" />
+              {data?.author}
+            </a>
+          </p>
+          <p className="text-gray-600">{data?.title}</p>
+        </div>
+      </div>
+    </article>
   );
 };
