@@ -13,7 +13,7 @@ const PublicViewLayout: React.FC<PublicViewLayoutProps> = ({ children }) => {
   return (
     <div className="flex flex-col min-h-screen">
       <header className="container z-40 w-full ml-auto mr-auto bg-coal">
-        <div className="flex items-center justify-between h-20 py-6">
+        <div className="flex items-center justify-between h-20 py-6 mx-6 sm:mx-0">
           <MainNav items={publicViewConfig.mainNav} />
           <nav>
             <Link

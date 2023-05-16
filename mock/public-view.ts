@@ -5,6 +5,7 @@ export const publicViewConfig: PublicViewConfig = {
     {
       title: "Blog",
       href: "/",
+      disabled: true,
     },
   ],
 };
