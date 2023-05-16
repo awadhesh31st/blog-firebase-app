@@ -4,8 +4,8 @@ export const publicViewConfig: PublicViewConfig = {
   mainNav: [
     {
       title: "Blog",
-      href: "/",
-      disabled: true,
+      href: "/blog",
+      disabled: false,
     },
   ],
 };
