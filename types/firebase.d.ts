@@ -43,8 +43,8 @@ export interface ArticleInformation {
 }
 
 export interface DateTime {
-  seconds?: string;
-  nanoseconds?: string;
+  seconds?: number;
+  nanoseconds?: number;
 }
 
 export interface GoogleLoginUserResponse {
