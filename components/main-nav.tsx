@@ -7,7 +7,8 @@ import { useSelectedLayoutSegment } from "next/navigation";
 import { MainNavItem } from "types";
 import { cm } from "@/lib/utils";
 import { siteConfig } from "@/mock/site";
-import { FaAnchor } from "react-icons/fa";
+import { FaAnchor, FaTimes } from "react-icons/fa";
+import { MobileNav } from "@/components/mobile-nav";
 
 interface MainNavProps {
   items?: MainNavItem[];
@@ -22,7 +23,7 @@ export function MainNav({ items, children }: MainNavProps) {
     <div className="flex gap-6 md:gap-10">
       <Link href="/" className="items-center hidden space-x-2 md:flex">
         <FaAnchor />
-        <span className="hidden font-bold sm:inline-block">
+        <span className="hidden font-extraBold sm:inline-block">
           {siteConfig.name}
         </span>
       </Link>
@@ -33,11 +34,10 @@ export function MainNav({ items, children }: MainNavProps) {
               key={index}
               href={item.disabled ? "#" : item.href}
               className={cm(
-                "flex items-center text-lg font-medium transition-colors hover:text-foreground/80 sm:text-sm",
-                item.href.startsWith(`/${segment}`)
-                  ? "text-foreground"
-                  : "text-foreground/60",
-                item.disabled && "cursor-not-allowed opacity-80"
+                "flex items-center text-lg font-light transition-colors sm:text-sm text-grayLight/90",
+                item.disabled
+                  ? "cursor-not-allowed opacity-80"
+                  : "hover:text-biege/80"
               )}
             >
               {item.title}
@@ -45,6 +45,16 @@ export function MainNav({ items, children }: MainNavProps) {
           ))}
         </nav>
       ) : null}
+      <button
+        className="flex items-center space-x-2 md:hidden"
+        onClick={() => setShowMobileMenu(!showMobileMenu)}
+      >
+        {showMobileMenu ? <FaTimes /> : <FaAnchor />}
+        <span className="font-bold">Menu</span>
+      </button>
+      {showMobileMenu && items && (
+        <MobileNav items={items}>{children}</MobileNav>
+      )}
     </div>
   );
 }
